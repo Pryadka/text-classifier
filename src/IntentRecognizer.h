@@ -21,7 +21,7 @@ namespace analizer
 
     private:
         std::vector<Rule> m_rules;
-        const parser::Tokenizer& m_tokenizer;
+        const parser::Tokenizer m_tokenizer;
     };
 
 }

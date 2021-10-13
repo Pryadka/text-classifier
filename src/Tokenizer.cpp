@@ -3,7 +3,7 @@
 #include <algorithm>
 
 namespace parser {
-    parser::Tokenizer::Tokenizer(const std::set<std::string_view>& ignoreList, const std::map<std::string_view, Token>& tokenList) :
+    parser::Tokenizer::Tokenizer(const std::set<std::string>& ignoreList, const std::map<std::string, Token>& tokenList) :
         m_ignoreList(ignoreList),
         m_tokenList(tokenList)
     {
@@ -18,11 +18,9 @@ namespace parser {
             std::transform(word.begin(), word.end(), word.begin(), ::tolower);
 
             // handle trailling characters
-            std::size_t notTraillingPos = word.find_last_not_of(",.!?;\n\t");
+            std::size_t notTraillingPos = word.find_last_not_of("?,.!;\n\t");
             if (notTraillingPos == std::string::npos) continue;
-            if (notTraillingPos) {
-                word.erase(notTraillingPos + 1);
-            }
+            word.erase(notTraillingPos + 1);
 
             if (m_ignoreList.find(word) != m_ignoreList.end()) {
                 continue;

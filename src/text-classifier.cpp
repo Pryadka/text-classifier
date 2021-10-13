@@ -13,11 +13,11 @@ int main(int argc, char* argv[])
     std::cout << argv[1] << std::endl;
 
     /// initialization. can be moved to addition function
-    const std::set<std::string_view> ignore{
+    const std::set<std::string> ignore{
         "the", "a", "an"
     };
 
-    const std::map<std::string_view, parser::Token> tokens{
+    const std::map<std::string, parser::Token> tokens{
         {"is", parser::Token::is},
         {"was", parser::Token::is},
         {"what", parser::Token::What},
